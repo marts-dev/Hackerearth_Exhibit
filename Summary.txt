@@ -1,0 +1,4 @@
+Approach was to initially investigate the data set, then try out using the currently available features to make a regression model.
+After the findings on the first approach, feature engineering it performed tp gain additional features fpr better result.
+On both approach scaling and normalization was performed.
+The result of both approach showed promising result for GradientBoostingRegressor.

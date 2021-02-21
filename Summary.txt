@@ -1,4 +1,14 @@
 Approach was to initially investigate the data set, then try out using the currently available features to make a regression model.
-After the findings on the first approach, feature engineering it performed tp gain additional features fpr better result.
+After the findings on the first approach, feature engineering it performed tp gain additional features for better result.
+
+In terms of feature engineering, I decided to use label encoding for most of the categorical values. For the case of Transport, I decided to use
+One hot encoding in order to minimize the effect of number that ay be assigned to the label.
+The additional feature introduced are the State and ShipmentDiff(Difference of Schedule and Delivery date).
+
+
 On both approach scaling and normalization was performed.
 The result of both approach showed promising result for GradientBoostingRegressor.
+
+Reference:
+https://www.kaggle.com/imsparsh/hackerearth-ml-exhibit-a-rt-w-ensembles-92
+by Sparsh Gupta

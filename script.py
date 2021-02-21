@@ -55,16 +55,16 @@ plt.ylabel("Weight")
 plt.show()
 
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
-scaler = StandardScaler()
+scaler = MinMaxScaler()
 scaler.fit(X_train)
 X_standard = scaler.transform(X_train)
 pca = PCA(n_components=1).fit(X_standard)
 X_train_pca = pca.transform(X_standard)
 
 products = X_train_pca*pca.components_[0]
-plt.scatter(X_train_pca,np.zeros_like(products)+0,c="red")
+#plt.scatter(X_train_pca,np.zeros_like(products)+0,c="red")
     
 plt.xlabel("Component 1")
 plt.ylabel("Weight")
@@ -85,3 +85,10 @@ plt.scatter(X_test_pca,pred,c="red")
 plt.xlabel("Component 1")
 plt.ylabel("Weight")
 plt.show()
+
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder(drop="if_binary",sparse=False)
+replacement = train_df["Transport"].mode()[0]
+train_df["Transport"] = train_df["Transport"].fillna(replacement)
+x_transport = pd.DataFrame(ohe.fit_transform(train_df[["Transport"]]), columns=ohe.get_feature_names(["Transport"]))
+# x_transport.columns=ohe.get_feature_names(["Transport"])
